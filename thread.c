@@ -1,0 +1,79 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   thread.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rahmoham <rahmoham@student.42.fr>          #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025-05-05 17:10:30 by rahmoham          #+#    #+#             */
+/*   Updated: 2025-05-05 17:10:30 by rahmoham         ###   ########`         */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "philo.h"
+
+
+void	start_threads(t_program *program)
+{
+	int	i;
+	// pthread_t	t_monitor;
+
+	i = 0;
+	printf("Starting threads...\n");
+	// pthread_create(&t_monitor, NULL, &monitor, program);
+	program->start_time = get_time();
+	while (i < program->args->num_philos)
+	{
+		if ((pthread_create(&program->philos[i].tid, NULL, &routine,
+			&program->philos[i])) == -1)
+			perror("pthread_create");
+		i++;
+	}
+	i = 0;
+	while (i < program->args->num_philos)
+	{
+		pthread_join(program->philos[i].tid, NULL);
+		i++;
+	}
+	// pthread_join(t_monitor, NULL);
+}
+
+int	check_done(t_program *program)
+{
+	int	i;
+
+	i = 0;
+	pthread_mutex_lock(program->mtx->donelock);
+	// pthread_mutex_lock(program->mtx->meallock);
+	while (i < program->args->num_philos)
+	{
+		if (program->philos[i].meal_count >= program->args->num_iterations)
+		{
+			program->done = 1;
+			pthread_mutex_unlock(program->mtx->donelock);
+			return (1);
+		}
+		// pthread_mutex_unlock(program->mtx->meallock); //jdid
+		i++;
+	}
+	pthread_mutex_unlock(program->mtx->donelock);
+	return (0);
+}
+
+void	*routine(void *ptr)
+{
+	t_program	*program;
+	t_philo		*philo;
+
+	philo = ptr;
+	program = philo->progback;
+	while (1)
+	{
+		if (check_done(program))
+			break ;
+		eat(philo);
+		ph_sleep(philo);
+		think(philo);
+	}
+	return NULL;
+}
