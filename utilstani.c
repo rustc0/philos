@@ -59,13 +59,13 @@ void	safe_lock(t_philo *philo, int flag)
 		if (philo->id % 2 == 0)
 		{
 			i = pthread_mutex_lock(philo->left_fork);
-			usleep(100);
+			// usleep(100);
 			j = pthread_mutex_lock(philo->right_fork);
 		}
 		else
 		{
 			i = pthread_mutex_lock(philo->right_fork);
-			usleep(100);
+			// usleep(100);
 			j = pthread_mutex_lock(philo->left_fork);
 		}
 	}

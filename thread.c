@@ -16,10 +16,10 @@
 void	start_threads(t_program *program)
 {
 	int	i;
-	// pthread_t	t_monitor;
+	pthread_t	t_monitor;
 
 	i = 0;
-	// pthread_create(&t_monitor, NULL, &monitor, program);
+	pthread_create(&t_monitor, NULL, &monitor, program);
 	program->start_time = get_time();
 	while (i < program->args->num_philos)
 	{
@@ -34,7 +34,7 @@ void	start_threads(t_program *program)
 		pthread_join(program->philos[i].tid, NULL);
 		i++;
 	}
-	// pthread_join(t_monitor, NULL);
+	pthread_join(t_monitor, NULL);
 }
 
 int	check_done(t_program *program)

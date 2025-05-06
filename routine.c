@@ -50,3 +50,36 @@ void	think(t_philo *philo)
 	print_message(philo, THOUGHT);
 	pthread_mutex_unlock(philo->progback->mtx->printlock);
 }
+
+void	*monitor(void *ptr)
+{
+	t_program	*program;
+	int			i;
+
+	program = (t_program *)ptr;
+	i = 0;
+	while (1)
+	{
+		if (check_done(program))
+			break ;
+		if (i >= program->args->num_philos)
+			i = 0;
+		pthread_mutex_lock(program->mtx->timelock);
+		if (program->philos[i].last_time &&
+			get_time() - program->philos[i].last_time >= program->args->time_to_die)
+		{
+			// printf("done = %d\n", program->done);
+			pthread_mutex_unlock(program->mtx->timelock);
+			print_message(&program->philos[i], DIED);
+			pthread_mutex_lock(program->mtx->deadlock);
+			program->dead = 1;
+			pthread_mutex_unlock(program->mtx->deadlock);
+			// printf("done = %d\n", program->done);
+			return NULL;
+		}
+		pthread_mutex_unlock(program->mtx->timelock);
+		i++;
+		ft_msleep(10);
+	}
+	return NULL;
+}

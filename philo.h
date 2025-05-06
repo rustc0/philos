@@ -112,5 +112,6 @@ void	*routine(void *ptr);
 void	eat(t_philo *philo);
 void	ph_sleep(t_philo *philo);
 void	think(t_philo *philo);
+void	*monitor(void *ptr);
 
 #endif

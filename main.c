@@ -50,8 +50,6 @@ int	main(int ac, char **av)
 
 	start_threads(program);
 
-	printf("All threads finished.\n");
-
 	clean_up(program);
 	return (0);
 }
