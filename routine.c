@@ -14,8 +14,8 @@
 
 void	eat(t_philo	*philo)
 {
-	if (check_done(philo->progback))
-		return ;
+	// if (check_done(philo->progback) || check_done(philo->progback))
+	// 	return ;
 	safe_lock(philo, 0);
 	pthread_mutex_lock(philo->progback->mtx->printlock);
 	print_message(philo, TOOK);
@@ -24,18 +24,18 @@ void	eat(t_philo	*philo)
 	pthread_mutex_unlock(philo->progback->mtx->printlock);
 	ft_msleep(philo->progback->args->time_to_eat);
 	safe_lock(philo, 1);
-	pthread_mutex_lock(philo->progback->mtx->timelock);
-	philo->last_time = get_time();
-	pthread_mutex_unlock(philo->progback->mtx->timelock);
 	pthread_mutex_lock(philo->progback->mtx->meallock);
 	philo->meal_count++;
 	pthread_mutex_unlock(philo->progback->mtx->meallock);
+	pthread_mutex_lock(philo->progback->mtx->timelock);
+	philo->last_time = get_time();
+	pthread_mutex_unlock(philo->progback->mtx->timelock);
 }
 
 void	ph_sleep(t_philo *philo)
 {
-	if (check_done(philo->progback))
-		return ;
+	// if (check_done(philo->progback) || check_done(philo->progback))
+	// 	return ;
 	pthread_mutex_lock(philo->progback->mtx->printlock);
 	print_message(philo, SLEPT);
 	pthread_mutex_unlock(philo->progback->mtx->printlock);
@@ -44,8 +44,8 @@ void	ph_sleep(t_philo *philo)
 
 void	think(t_philo *philo)
 {
-	if (check_done(philo->progback))
-		return ;
+	// if (check_done(philo->progback) || check_done(philo->progback))
+	// 	return ;
 	pthread_mutex_lock(philo->progback->mtx->printlock);
 	print_message(philo, THOUGHT);
 	pthread_mutex_unlock(philo->progback->mtx->printlock);
@@ -73,8 +73,8 @@ void	*monitor(void *ptr)
 			print_message(&program->philos[i], DIED);
 			pthread_mutex_lock(program->mtx->deadlock);
 			program->dead = 1;
+			printf("\ndead = %d\n\n", program->dead);
 			pthread_mutex_unlock(program->mtx->deadlock);
-			// printf("done = %d\n", program->done);
 			return NULL;
 		}
 		pthread_mutex_unlock(program->mtx->timelock);

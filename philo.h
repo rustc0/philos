@@ -21,11 +21,11 @@
 # include <sys/stat.h>
 # include <limits.h>
 
-# define TAKEN_FORK		"%ldms %d has taken a fork\n"
-# define EATING			"%ldms %d is eating\n"
-# define SLEEPING		"%ldms %d is sleeping\n"
-# define THINKING		"%ldms %d is thinking\n"
-# define DEAD			"%ldms %d died\n"
+# define TAKEN_FORK		"%ld %d has taken a fork\n"
+# define EATING			"%ld %d is eating\n"
+# define SLEEPING		"%ld %d is sleeping\n"
+# define THINKING		"%ld %d is thinking\n"
+# define DEAD			"%ld %d died\n"
 
 enum	pprint
 {
@@ -95,6 +95,7 @@ void	print_message(t_philo *philo, int flag);
 long	get_time(void);
 int		ft_msleep(unsigned int time);
 int		check_done(t_program *program);
+int		check_death(t_program *program);
 
 
 // Initialization functions
