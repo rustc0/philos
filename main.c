@@ -50,6 +50,7 @@ int	main(int ac, char **av)
 
 	start_threads(program);
 
+	printf("threads salaw dead : %d\n", program->dead);
 	clean_up(program);
 	return (0);
 }

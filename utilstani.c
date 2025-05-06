@@ -46,7 +46,7 @@ int	ft_msleep(unsigned int time)
 	{
 		if (get_time() - strt >= time)
 			break ;
-		usleep(100);
+		usleep(900);
 	}
 	return (0);
 }
@@ -59,13 +59,11 @@ void	safe_lock(t_philo *philo, int flag)
 		if (philo->id % 2 == 0)
 		{
 			i = pthread_mutex_lock(philo->left_fork);
-			// usleep(100);
 			j = pthread_mutex_lock(philo->right_fork);
 		}
 		else
 		{
 			i = pthread_mutex_lock(philo->right_fork);
-			// usleep(100);
 			j = pthread_mutex_lock(philo->left_fork);
 		}
 	}
@@ -82,6 +80,8 @@ void	print_message(t_philo *philo, int flag)
 {
 	long	timestrt;
 
+	if (check_done(philo->progback) || check_death(philo->progback))
+		return ;
 	timestrt = philo->progback->start_time;
 	if (flag == TOOK)
 		printf(TAKEN_FORK, (get_time() - timestrt), philo->id);

@@ -47,7 +47,7 @@ int	check_done(t_program *program)
 	while (i < program->args->num_philos)
 	{
 		if (program->args->num_iterations > 0 &&
-			program->philos[i].meal_count >= program->args->num_iterations)
+			program->philos[i].meal_count == program->args->num_iterations)
 		{
 			program->done = 1;
 			printf("done : %d\n", program->done);
@@ -64,28 +64,13 @@ int	check_done(t_program *program)
 
 int	check_death(t_program *program)
 {
-	long	time;
-	int	i;
-
-	i = 0;
-	pthread_mutex_lock(program->mtx->timelock);
-	time = get_time();
-	pthread_mutex_unlock(program->mtx->timelock);
-	while (i < program->args->num_philos)
+	pthread_mutex_lock(program->mtx->deadlock);
+	if (program->dead)
 	{
-		pthread_mutex_lock(program->mtx->timelock);
-		if (program->philos[i].last_time &&
-			time - program->philos[i].last_time >= program->args->time_to_die)
-		{
-			pthread_mutex_unlock(program->mtx->timelock);
-			pthread_mutex_lock(program->mtx->deadlock);
-			program->dead = 1;
-			pthread_mutex_unlock(program->mtx->deadlock);
-			return (1);
-		}
-		pthread_mutex_unlock(program->mtx->timelock);
-		i++;
+		pthread_mutex_unlock(program->mtx->deadlock);
+		return (1);
 	}
+	pthread_mutex_unlock(program->mtx->deadlock);
 	return (0);
 }
 
@@ -98,21 +83,11 @@ void	*routine(void *ptr)
 	program = philo->progback;
 	while (1)
 	{
-		if (check_done(program) || check_death(program))
-			break ;
-		// if (check_death(program))
-		// 	break ;
 		eat(philo);
-		if (check_done(program) || check_death(program))
-			break ;
-		// if (check_death(program))
-		// 	break ;
 		ph_sleep(philo);
+		think(philo);
 		if (check_done(program) || check_death(program))
 			break ;
-		// if (check_death(program))
-		// 	break ;
-		think(philo);
 	}
 	return NULL;
 }
