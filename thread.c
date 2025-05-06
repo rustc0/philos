@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thread.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rahmoham <rahmoham@student.42.fr>          #+#  +:+       +#+        */
+/*   By: rahmoham <rahmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-05-05 17:10:30 by rahmoham          #+#    #+#             */
-/*   Updated: 2025-05-05 17:10:30 by rahmoham         ###   ########`         */
+/*   Created: 2025/05/05 17:10:30 by rahmoham          #+#    #+#             */
+/*   Updated: 2025/05/06 10:29:32 by rahmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	start_threads(t_program *program)
 	// pthread_t	t_monitor;
 
 	i = 0;
-	printf("Starting threads...\n");
 	// pthread_create(&t_monitor, NULL, &monitor, program);
 	program->start_time = get_time();
 	while (i < program->args->num_philos)
@@ -44,18 +43,20 @@ int	check_done(t_program *program)
 
 	i = 0;
 	pthread_mutex_lock(program->mtx->donelock);
-	// pthread_mutex_lock(program->mtx->meallock);
+	pthread_mutex_lock(program->mtx->meallock);
 	while (i < program->args->num_philos)
 	{
-		if (program->philos[i].meal_count >= program->args->num_iterations)
+		if (program->args->num_iterations > 0 &&
+			program->philos[i].meal_count >= program->args->num_iterations)
 		{
 			program->done = 1;
 			pthread_mutex_unlock(program->mtx->donelock);
+			pthread_mutex_unlock(program->mtx->meallock);
 			return (1);
 		}
-		// pthread_mutex_unlock(program->mtx->meallock); //jdid
 		i++;
 	}
+	pthread_mutex_unlock(program->mtx->meallock);
 	pthread_mutex_unlock(program->mtx->donelock);
 	return (0);
 }

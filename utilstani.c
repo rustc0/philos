@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utilstani.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rahmoham <rahmoham@student.42.fr>          #+#  +:+       +#+        */
+/*   By: rahmoham <rahmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-05-05 16:07:36 by rahmoham          #+#    #+#             */
-/*   Updated: 2025-05-05 16:07:36 by rahmoham         ###   ########`         */
+/*   Created: 2025/05/05 16:07:36 by rahmoham          #+#    #+#             */
+/*   Updated: 2025/05/06 10:29:57 by rahmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,7 @@ int	ft_msleep(unsigned int time)
 void	safe_lock(t_philo *philo, int flag)
 {
 	int (i), (j);
-	if (flag)
-	{
-		i = pthread_mutex_unlock(philo->left_fork);
-		j = pthread_mutex_unlock(philo->right_fork);
-	}
-	else
+	if (!flag)
 	{
 		if (philo->id % 2 == 0)
 		{
@@ -73,6 +68,11 @@ void	safe_lock(t_philo *philo, int flag)
 			usleep(100);
 			j = pthread_mutex_lock(philo->left_fork);
 		}
+	}
+	else
+	{
+		i = pthread_mutex_unlock(philo->left_fork);
+		j = pthread_mutex_unlock(philo->right_fork);
 	}
 	if (i != 0 || j != 0)
 		ft_error("Error: Mutex lock or unnlock failed\n", philo->progback);
