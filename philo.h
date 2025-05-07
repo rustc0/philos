@@ -27,14 +27,14 @@
 # define THINKING		"%ld %d is thinking\n"
 # define DEAD			"%ld %d died\n"
 
-enum	pprint
-{
-	TOOK,
-	EAT,
-	SLEPT,
-	THOUGHT,
-	DIED,
-};
+// enum	pprint
+// {
+// 	TOOK,
+// 	EAT,
+// 	SLEPT,
+// 	THOUGHT,
+// 	DIED,
+// };
 
 typedef pthread_mutex_t	t_mtxlck;
 
@@ -91,7 +91,7 @@ void	*my_malloc(size_t size, t_program *program);
 void	clean_up(t_program *program);
 void	destroy_forks(t_program *program);
 void	safe_lock(t_philo *philo, int flag);
-void	print_message(t_philo *philo, int flag);
+void	print_message(t_philo *philo, char *flag);
 long	get_time(void);
 int		ft_msleep(unsigned int time);
 int		check_done(t_program *program);

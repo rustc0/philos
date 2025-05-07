@@ -76,21 +76,22 @@ void	safe_lock(t_philo *philo, int flag)
 		ft_error("Error: Mutex lock or unnlock failed\n", philo->progback);
 }
 
-void	print_message(t_philo *philo, int flag)
+void	print_message(t_philo *philo, char *flag)
 {
 	long	timestrt;
 
 	if (check_done(philo->progback) || check_death(philo->progback))
 		return ;
 	timestrt = philo->progback->start_time;
-	if (flag == TOOK)
-		printf(TAKEN_FORK, (get_time() - timestrt), philo->id);
-	else if (flag == EAT)
-		printf(EATING, get_time() - timestrt, philo->id);
-	else if (flag == SLEPT)
-		printf(SLEEPING, get_time() - timestrt, philo->id);
-	else if (flag == THOUGHT)
-		printf(THINKING, get_time() - timestrt, philo->id);
-	else if (flag == DIED)
-		printf(DEAD, get_time() - timestrt, philo->id);
+	// if (flag == TOOK)
+	// 	printf(TAKEN_FORK, (get_time() - timestrt), philo->id);
+	// else if (flag == EAT)
+	// 	printf(EATING, get_time() - timestrt, philo->id);
+	// else if (flag == SLEPT)
+	// 	printf(SLEEPING, get_time() - timestrt, philo->id);
+	// else if (flag == THOUGHT)
+	// 	printf(THINKING, get_time() - timestrt, philo->id);
+	// else if (flag == DIED)
+	// 	printf(DEAD, get_time() - timestrt, philo->id);
+	printf(flag, get_time() - timestrt, philo->id);
 }
