@@ -6,7 +6,7 @@
 /*   By: rahmoham <rahmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 16:07:36 by rahmoham          #+#    #+#             */
-/*   Updated: 2025/05/06 10:29:57 by rahmoham         ###   ########.fr       */
+/*   Updated: 2025/05/07 09:11:49 by rahmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	ft_msleep(unsigned int time)
 	{
 		if (get_time() - strt >= time)
 			break ;
-		usleep(900);
+		usleep(100);
 	}
 	return (0);
 }

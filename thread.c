@@ -6,7 +6,7 @@
 /*   By: rahmoham <rahmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 17:10:30 by rahmoham          #+#    #+#             */
-/*   Updated: 2025/05/06 10:35:26 by rahmoham         ###   ########.fr       */
+/*   Updated: 2025/05/07 08:42:26 by rahmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	check_done(t_program *program)
 			program->philos[i].meal_count == program->args->num_iterations)
 		{
 			program->done = 1;
-			printf("done : %d\n", program->done);
+			// printf("done : %d\n", program->done);
 			pthread_mutex_unlock(program->mtx->donelock);
 			pthread_mutex_unlock(program->mtx->meallock);
 			return (1);

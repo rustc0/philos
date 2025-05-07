@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rahmoham <rahmoham@student.42.fr>          #+#  +:+       +#+        */
+/*   By: rahmoham <rahmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-05-05 15:36:50 by rahmoham          #+#    #+#             */
-/*   Updated: 2025-05-05 15:36:50 by rahmoham         ###   ########.fr       */
+/*   Created: 2025/05/05 15:36:50 by rahmoham          #+#    #+#             */
+/*   Updated: 2025/05/07 08:41:45 by rahmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	main(int ac, char **av)
 
 	start_threads(program);
 
-	printf("threads salaw dead : %d\n", program->dead);
+	// printf("threads salaw dead : %d\n", program->dead);
 	clean_up(program);
 	return (0);
 }

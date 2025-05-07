@@ -6,7 +6,7 @@
 /*   By: rahmoham <rahmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 17:43:03 by rahmoham          #+#    #+#             */
-/*   Updated: 2025/05/06 08:28:47 by rahmoham         ###   ########.fr       */
+/*   Updated: 2025/05/07 09:45:44 by rahmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void	eat(t_philo	*philo)
 	print_message(philo, TOOK);
 	print_message(philo, EAT);
 	pthread_mutex_unlock(philo->progback->mtx->printlock);
-	ft_msleep(philo->progback->args->time_to_eat);
-	safe_lock(philo, 1);
 	pthread_mutex_lock(philo->progback->mtx->timelock);
 	philo->last_time = get_time();
 	pthread_mutex_unlock(philo->progback->mtx->timelock);
+	ft_msleep(philo->progback->args->time_to_eat);
+	safe_lock(philo, 1);
 	pthread_mutex_lock(philo->progback->mtx->meallock);
 	philo->meal_count++;
 	pthread_mutex_unlock(philo->progback->mtx->meallock);
@@ -66,19 +66,18 @@ void	*monitor(void *ptr)
 			i = 0;
 		pthread_mutex_lock(program->mtx->timelock);
 		if (program->philos[i].last_time &&
-			get_time() - program->philos[i].last_time >= program->args->time_to_die)
+			get_time() - program->philos[i].last_time > program->args->time_to_die)
 		{
 			pthread_mutex_unlock(program->mtx->timelock);
 			print_message(&program->philos[i], DIED);
 			pthread_mutex_lock(program->mtx->deadlock);
 			program->dead = 1;
-			printf("dead = %d\n\n", program->dead);
 			pthread_mutex_unlock(program->mtx->deadlock);
 			return NULL;
 		}
 		pthread_mutex_unlock(program->mtx->timelock);
 		i++;
-		ft_msleep(10);
+		ft_msleep(5);
 	}
 	return NULL;
 }
