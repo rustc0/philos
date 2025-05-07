@@ -6,7 +6,7 @@
 /*   By: rahmoham <rahmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 16:07:36 by rahmoham          #+#    #+#             */
-/*   Updated: 2025/05/07 09:11:49 by rahmoham         ###   ########.fr       */
+/*   Updated: 2025/05/07 13:12:48 by rahmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,15 +83,16 @@ void	print_message(t_philo *philo, char *flag)
 	if (check_done(philo->progback) || check_death(philo->progback))
 		return ;
 	timestrt = philo->progback->start_time;
-	// if (flag == TOOK)
-	// 	printf(TAKEN_FORK, (get_time() - timestrt), philo->id);
-	// else if (flag == EAT)
-	// 	printf(EATING, get_time() - timestrt, philo->id);
-	// else if (flag == SLEPT)
-	// 	printf(SLEEPING, get_time() - timestrt, philo->id);
-	// else if (flag == THOUGHT)
-	// 	printf(THINKING, get_time() - timestrt, philo->id);
-	// else if (flag == DIED)
-	// 	printf(DEAD, get_time() - timestrt, philo->id);
 	printf(flag, get_time() - timestrt, philo->id);
 }
+
+// if (flag == TOOK)
+// 	printf(TAKEN_FORK, (get_time() - timestrt), philo->id);
+// else if (flag == EAT)
+// 	printf(EATING, get_time() - timestrt, philo->id);
+// else if (flag == SLEPT)
+// 	printf(SLEEPING, get_time() - timestrt, philo->id);
+// else if (flag == THOUGHT)
+// 	printf(THINKING, get_time() - timestrt, philo->id);
+// else if (flag == DIED)
+// 	printf(DEAD, get_time() - timestrt, philo->id);

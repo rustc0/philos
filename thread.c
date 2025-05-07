@@ -6,7 +6,7 @@
 /*   By: rahmoham <rahmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 17:10:30 by rahmoham          #+#    #+#             */
-/*   Updated: 2025/05/07 08:42:26 by rahmoham         ###   ########.fr       */
+/*   Updated: 2025/05/07 13:46:17 by rahmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,32 @@ void	*routine(void *ptr)
 
 	philo = ptr;
 	program = philo->progback;
+	if (program->args->num_philos == 1)
+		{
+			one_philo(philo);
+			return (NULL);
+		}
 	while (1)
 	{
+		
 		eat(philo);
 		ph_sleep(philo);
 		think(philo);
 		if (check_done(program) || check_death(program))
 			break ;
 	}
-	return NULL;
+	return (NULL);
+}
+
+void	one_philo(t_philo *philo)
+{
+	pthread_mutex_lock(philo->left_fork);
+	pthread_mutex_lock(philo->progback->mtx->printlock);
+	print_message(philo, TAKEN_FORK);
+	pthread_mutex_unlock(philo->progback->mtx->printlock);
+	ft_msleep(philo->progback->args->time_to_die);
+	pthread_mutex_unlock(philo->left_fork);
+	pthread_mutex_lock(philo->progback->mtx->printlock);
+	print_message(philo, DEAD);
+	pthread_mutex_unlock(philo->progback->mtx->printlock);
 }

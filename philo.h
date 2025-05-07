@@ -6,7 +6,7 @@
 /*   By: rahmoham <rahmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 10:37:42 by rahmoham          #+#    #+#             */
-/*   Updated: 2025/05/05 10:57:53 by rahmoham         ###   ########.fr       */
+/*   Updated: 2025/05/07 13:21:14 by rahmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,6 @@ void	eat(t_philo *philo);
 void	ph_sleep(t_philo *philo);
 void	think(t_philo *philo);
 void	*monitor(void *ptr);
+void	one_philo(t_philo *philo);
 
 #endif

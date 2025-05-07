@@ -6,7 +6,7 @@
 /*   By: rahmoham <rahmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 17:43:03 by rahmoham          #+#    #+#             */
-/*   Updated: 2025/05/07 09:45:44 by rahmoham         ###   ########.fr       */
+/*   Updated: 2025/05/07 13:37:50 by rahmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	*monitor(void *ptr)
 	int			i;
 
 	program = (t_program *)ptr;
+	if (program->args->num_philos == 1)
+		return (NULL);
 	i = 0;
 	while (1)
 	{

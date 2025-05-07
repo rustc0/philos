@@ -6,7 +6,7 @@
 /*   By: rahmoham <rahmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 16:08:02 by rahmoham          #+#    #+#             */
-/*   Updated: 2025/05/06 10:29:07 by rahmoham         ###   ########.fr       */
+/*   Updated: 2025/05/07 13:41:23 by rahmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,14 @@ void	init_philos(t_program *program)
 		ph[i].tid = 0;
 		ph[i].meal_count = 0;
 		ph[i].left_fork = &program->forks[i];
-		if (ph[i].id + 1 > program->args->num_philos)
-			ph[i].right_fork = &program->forks[0];
-		else
-			ph[i].right_fork = &program->forks[i + 1];
+		if (program->args->num_philos > 1)
+		{
+			if (ph[i].id + 1 > program->args->num_philos)
+				ph[i].right_fork = &program->forks[0];
+			else
+				ph[i].right_fork = &program->forks[i + 1];
+		}
+		
 		// printf("philo %d left fork %p right fork %p\n", ph[i].id,
 		// 	ph[i].left_fork, ph[i].right_fork);
 		i++;
