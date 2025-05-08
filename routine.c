@@ -79,7 +79,7 @@ void	*monitor(void *ptr)
 		}
 		pthread_mutex_unlock(program->mtx->timelock);
 		i++;
-		ft_msleep(5);
+		ft_msleep(1);
 	}
 	return NULL;
 }

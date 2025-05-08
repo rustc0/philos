@@ -14,7 +14,7 @@
 
 void	clean_up(t_program *program)
 {
-	if (!program)
+	if (!program || !program->args)
 		return ;
 	destroy_forks(program);
 	init_mtx(program, 0);

@@ -38,7 +38,7 @@ void	init_philos(t_program *program)
 	{
 		ph[i].progback = program;
 		ph[i].id = i + 1;
-		ph[i].last_time = 0;
+		ph[i].last_time = get_time();
 		ph[i].tid = 0;
 		ph[i].meal_count = 0;
 		ph[i].left_fork = &program->forks[i];
@@ -49,7 +49,6 @@ void	init_philos(t_program *program)
 			else
 				ph[i].right_fork = &program->forks[i + 1];
 		}
-		
 		// printf("philo %d left fork %p right fork %p\n", ph[i].id,
 		// 	ph[i].left_fork, ph[i].right_fork);
 		i++;
@@ -115,6 +114,12 @@ t_args	*init_args(char **args, t_program *program)
 		p_args->num_iterations = ft_atol(args[5]);
 	else
 		p_args->num_iterations = -1;
+	if(p_args->num_philos == 0)
+	{
+		free(p_args);
+		free(program);
+		ft_error("Error: Invalid arguments\n", program);
+	}
 	if (p_args->num_philos == -1 || p_args->time_to_die == -1
 		|| p_args->time_to_eat == -1 || p_args->time_to_sleep == -1)
 		ft_error("Error: Invalid arguments\n", program);
