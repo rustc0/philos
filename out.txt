@@ -1,0 +1,174 @@
+[0;32m1 2 has taken a fork
+[0m[0;32m1 2 has taken a fork
+[0m1 2 is eating
+[0;32m1 4 has taken a fork
+[0m[0;32m1 4 has taken a fork
+[0m1 4 is eating
+201 2 is sleeping
+[0;32m201 3 has taken a fork
+[0m[0;32m201 3 has taken a fork
+[0m201 3 is eating
+201 4 is sleeping
+[0;32m201 5 has taken a fork
+[0m[0;32m201 5 has taken a fork
+[0m201 5 is eating
+401 5 is sleeping
+[0;32m401 1 has taken a fork
+[0m[0;32m401 1 has taken a fork
+[0m401 1 is eating
+401 3 is sleeping
+401 2 is thinking
+401 4 is thinking
+[0;32m401 4 has taken a fork
+[0m[0;32m401 4 has taken a fork
+[0m401 4 is eating
+601 1 is sleeping
+[0;32m601 2 has taken a fork
+[0m[0;32m601 2 has taken a fork
+[0m601 2 is eating
+601 4 is sleeping
+601 5 is thinking
+601 3 is thinking
+[0;32m602 5 has taken a fork
+[0m[0;32m602 5 has taken a fork
+[0m602 5 is eating
+801 1 is thinking
+801 2 is sleeping
+801 4 is thinking
+[0;32m801 3 has taken a fork
+[0m[0;32m801 3 has taken a fork
+[0m801 3 is eating
+802 5 is sleeping
+[0;32m802 1 has taken a fork
+[0m[0;32m802 1 has taken a fork
+[0m802 1 is eating
+1001 2 is thinking
+1001 3 is sleeping
+[0;32m1001 4 has taken a fork
+[0m[0;32m1001 4 has taken a fork
+[0m1001 4 is eating
+1002 1 is sleeping
+1002 5 is thinking
+[0;32m1002 2 has taken a fork
+[0m[0;32m1002 2 has taken a fork
+[0m1002 2 is eating
+1201 4 is sleeping
+[0;32m1201 5 has taken a fork
+[0m[0;32m1201 5 has taken a fork
+[0m1201 5 is eating
+1201 3 is thinking
+1202 2 is sleeping
+[0;32m1202 3 has taken a fork
+[0m[0;32m1202 3 has taken a fork
+[0m1202 3 is eating
+1202 1 is thinking
+1401 5 is sleeping
+[0;32m1401 1 has taken a fork
+[0m[0;32m1401 1 has taken a fork
+[0m1401 1 is eating
+1401 4 is thinking
+1402 2 is thinking
+1402 3 is sleeping
+[0;32m1402 4 has taken a fork
+[0m[0;32m1402 4 has taken a fork
+[0m1402 4 is eating
+1601 1 is sleeping
+[0;32m1601 2 has taken a fork
+[0m[0;32m1601 2 has taken a fork
+[0m1601 2 is eating
+1601 5 is thinking
+1602 4 is sleeping
+[0;32m1602 5 has taken a fork
+[0m[0;32m1602 5 has taken a fork
+[0m1602 5 is eating
+1602 3 is thinking
+1801 2 is sleeping
+[0;32m1801 3 has taken a fork
+[0m[0;32m1801 3 has taken a fork
+[0m1801 3 is eating
+1801 1 is thinking
+1802 4 is thinking
+1802 5 is sleeping
+[0;32m1802 1 has taken a fork
+[0m[0;32m1802 1 has taken a fork
+[0m1802 1 is eating
+2001 3 is sleeping
+[0;32m2001 4 has taken a fork
+[0m[0;32m2001 4 has taken a fork
+[0m2001 4 is eating
+2001 2 is thinking
+2002 5 is thinking
+2002 1 is sleeping
+[0;32m2002 2 has taken a fork
+[0m[0;32m2002 2 has taken a fork
+[0m2002 2 is eating
+2201 4 is sleeping
+[0;32m2201 5 has taken a fork
+[0m[0;32m2201 5 has taken a fork
+[0m2201 5 is eating
+2201 3 is thinking
+2202 1 is thinking
+2202 2 is sleeping
+[0;32m2202 3 has taken a fork
+[0m[0;32m2202 3 has taken a fork
+[0m2202 3 is eating
+2401 4 is thinking
+2401 5 is sleeping
+[0;32m2401 1 has taken a fork
+[0m[0;32m2401 1 has taken a fork
+[0m2401 1 is eating
+2402 3 is sleeping
+[0;32m2402 4 has taken a fork
+[0m[0;32m2402 4 has taken a fork
+[0m2402 4 is eating
+2402 2 is thinking
+2601 1 is sleeping
+[0;32m2601 2 has taken a fork
+[0m[0;32m2601 2 has taken a fork
+[0m2601 2 is eating
+2601 5 is thinking
+2602 4 is sleeping
+2602 3 is thinking
+[0;32m2602 5 has taken a fork
+[0m[0;32m2602 5 has taken a fork
+[0m2602 5 is eating
+2801 1 is thinking
+2801 2 is sleeping
+[0;32m2801 3 has taken a fork
+[0m[0;32m2801 3 has taken a fork
+[0m2801 3 is eating
+2802 5 is sleeping
+2802 4 is thinking
+[0;32m2802 1 has taken a fork
+[0m[0;32m2802 1 has taken a fork
+[0m2802 1 is eating
+3001 2 is thinking
+[0;32m3001 4 has taken a fork
+[0m[0;32m3001 4 has taken a fork
+[0m3001 4 is eating
+3001 3 is sleeping
+3002 1 is sleeping
+[0;32m3002 2 has taken a fork
+[0m[0;32m3002 2 has taken a fork
+[0m3002 2 is eating
+3002 5 is thinking
+3201 4 is sleeping
+[0;32m3201 5 has taken a fork
+[0m[0;32m3201 5 has taken a fork
+[0m3201 5 is eating
+3201 3 is thinking
+3202 1 is thinking
+3202 2 is sleeping
+[0;32m3202 3 has taken a fork
+[0m[0;32m3202 3 has taken a fork
+[0m3202 3 is eating
+3401 4 is thinking
+3401 5 is sleeping
+[0;32m3401 1 has taken a fork
+[0m[0;32m3401 1 has taken a fork
+[0m3401 1 is eating
+3402 3 is sleeping
+[0;32m3402 4 has taken a fork
+[0m[0;32m3402 4 has taken a fork
+[0m3402 4 is eating
+3402 2 is thinking

@@ -6,7 +6,7 @@
 /*   By: rahmoham <rahmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 17:10:30 by rahmoham          #+#    #+#             */
-/*   Updated: 2025/05/09 10:07:03 by rahmoham         ###   ########.fr       */
+/*   Updated: 2025/05/09 12:31:06 by rahmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,10 @@ int	check_done(t_program *program)
 	pthread_mutex_lock(program->mtx->meallock);
 	while (i < program->args->num_philos)
 	{
-		if (program->args->num_iterations > 0 &&
-			program->philos[i].meal_count == program->args->num_iterations)
+		if (program->args->num_iterations != -1 &&
+			philos_full(program))
 		{
 			program->done = 1;
-			// printf("done : %d\n", program->done);
 			pthread_mutex_unlock(program->mtx->donelock);
 			pthread_mutex_unlock(program->mtx->meallock);
 			return (1);

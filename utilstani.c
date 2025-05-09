@@ -6,7 +6,7 @@
 /*   By: rahmoham <rahmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 16:07:36 by rahmoham          #+#    #+#             */
-/*   Updated: 2025/05/09 10:36:16 by rahmoham         ###   ########.fr       */
+/*   Updated: 2025/05/09 13:06:23 by rahmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,18 @@ void	print_message(t_philo *philo, char *flag)
 		return ;
 	timestrt = philo->progback->start_time;
 	printf(flag, get_time() - timestrt, philo->id);
+}
+
+int	philos_full(t_program *program)
+{
+	int	i;
+
+	i = 0;
+	while (i < program->args->num_philos)
+	{
+		if (program->philos[i].meal_count < program->args->num_iterations)
+			return (0);
+		i++;
+	}
+	return (1);
 }

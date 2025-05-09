@@ -6,7 +6,7 @@
 /*   By: rahmoham <rahmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 10:37:42 by rahmoham          #+#    #+#             */
-/*   Updated: 2025/05/09 10:34:38 by rahmoham         ###   ########.fr       */
+/*   Updated: 2025/05/09 12:30:56 by rahmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,6 @@
 # define SLEEPING		"%ld %d is sleeping\n"
 # define THINKING		"%ld %d is thinking\n"
 # define DEAD			RED "%ld %d died\n" RESET
-
-// enum	pprint
-// {
-// 	TOOK,
-// 	EAT,
-// 	SLEPT,
-// 	THOUGHT,
-// 	DIED,
-// };
 
 typedef pthread_mutex_t	t_mtxlck;
 
@@ -102,6 +93,7 @@ long	get_time(void);
 int		ft_msleep(unsigned int time);
 int		check_done(t_program *program);
 int		check_death(t_program *program);
+int		philos_full(t_program *program);
 
 
 // Initialization functions

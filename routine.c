@@ -6,7 +6,7 @@
 /*   By: rahmoham <rahmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 17:43:03 by rahmoham          #+#    #+#             */
-/*   Updated: 2025/05/09 10:38:55 by rahmoham         ###   ########.fr       */
+/*   Updated: 2025/05/09 13:52:16 by rahmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ void	eat(t_philo	*philo)
 	print_message(philo, TAKEN_FORK);
 	print_message(philo, TAKEN_FORK);
 	print_message(philo, EATING);
-	pthread_mutex_unlock(philo->progback->mtx->printlock);
-	ft_msleep(philo->progback->args->time_to_eat);
-	safe_lock(philo, 1);
 	pthread_mutex_lock(philo->progback->mtx->meallock);
 	philo->meal_count++;
 	pthread_mutex_unlock(philo->progback->mtx->meallock);
+	pthread_mutex_unlock(philo->progback->mtx->printlock);
+	ft_msleep(philo->progback->args->time_to_eat);
+	safe_lock(philo, 1);
 }
 
 void	ph_sleep(t_philo *philo)
