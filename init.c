@@ -6,7 +6,7 @@
 /*   By: rahmoham <rahmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 16:08:02 by rahmoham          #+#    #+#             */
-/*   Updated: 2025/05/07 13:41:23 by rahmoham         ###   ########.fr       */
+/*   Updated: 2025/05/09 09:51:32 by rahmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ t_args	*init_args(char **args, t_program *program)
 	{
 		free(p_args);
 		free(program);
+		program = NULL;
 		ft_error("Error: Invalid arguments\n", program);
 	}
 	if (p_args->num_philos == -1 || p_args->time_to_die == -1

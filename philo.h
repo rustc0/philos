@@ -6,7 +6,7 @@
 /*   By: rahmoham <rahmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 10:37:42 by rahmoham          #+#    #+#             */
-/*   Updated: 2025/05/07 13:21:14 by rahmoham         ###   ########.fr       */
+/*   Updated: 2025/05/09 10:34:38 by rahmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,17 @@
 # include <sys/stat.h>
 # include <limits.h>
 
-# define TAKEN_FORK		"%ld %d has taken a fork\n"
+# define RED     "\033[0;31m"
+# define GREEN   "\033[0;32m"
+# define YELLOW  "\033[0;33m"
+# define BLUE    "\033[0;34m"
+# define RESET   "\033[0m"
+
+# define TAKEN_FORK		GREEN "%ld %d has taken a fork\n" RESET
 # define EATING			"%ld %d is eating\n"
 # define SLEEPING		"%ld %d is sleeping\n"
 # define THINKING		"%ld %d is thinking\n"
-# define DEAD			"%ld %d died\n"
+# define DEAD			RED "%ld %d died\n" RESET
 
 // enum	pprint
 // {
