@@ -6,7 +6,7 @@
 /*   By: rahmoham <rahmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 17:10:30 by rahmoham          #+#    #+#             */
-/*   Updated: 2025/05/09 12:31:06 by rahmoham         ###   ########.fr       */
+/*   Updated: 2025/05/11 13:30:53 by rahmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,7 @@ void	*routine(void *ptr)
 		}
 	while (1)
 	{
-		if (philo->id % 2 != 0)
-			ft_msleep(1);
+		
 		eat(philo);
 		ph_sleep(philo);
 		think(philo);

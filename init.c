@@ -6,7 +6,7 @@
 /*   By: rahmoham <rahmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 16:08:02 by rahmoham          #+#    #+#             */
-/*   Updated: 2025/05/09 09:51:32 by rahmoham         ###   ########.fr       */
+/*   Updated: 2025/05/09 16:10:04 by rahmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ void	init_philos(t_program *program)
 			else
 				ph[i].right_fork = &program->forks[i + 1];
 		}
-		// printf("philo %d left fork %p right fork %p\n", ph[i].id,
-		// 	ph[i].left_fork, ph[i].right_fork);
 		i++;
 	}
 	program->philos = ph;

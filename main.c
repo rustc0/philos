@@ -6,7 +6,7 @@
 /*   By: rahmoham <rahmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 15:36:50 by rahmoham          #+#    #+#             */
-/*   Updated: 2025/05/07 08:41:45 by rahmoham         ###   ########.fr       */
+/*   Updated: 2025/05/09 15:50:26 by rahmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,11 @@ int	is_valid(int ac, char **av)
 int	main(int ac, char **av)
 {
 	t_program	*program;
-	char		*str;
 
-	str = "Usage: philos_n death_t eating_t sleeping_t [iterations]\n";
 	if (!is_valid(ac, av))
-		ft_error(str, NULL);
+		ft_error("Error: Invalid arguments\n", NULL);
 	program = init_program(av);
-
 	start_threads(program);
-
-	// printf("threads salaw dead : %d\n", program->dead);
 	clean_up(program);
 	return (0);
 }

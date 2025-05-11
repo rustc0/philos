@@ -6,7 +6,7 @@
 /*   By: rahmoham <rahmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 17:43:03 by rahmoham          #+#    #+#             */
-/*   Updated: 2025/05/09 13:52:16 by rahmoham         ###   ########.fr       */
+/*   Updated: 2025/05/11 13:34:16 by rahmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	eat(t_philo	*philo)
 {
 	if (check_done(philo->progback) || check_death(philo->progback))
 		return ;
+	if (philo->id % 2 != 0)
+		ft_msleep(5);
 	safe_lock(philo, 0);
 	pthread_mutex_lock(philo->progback->mtx->printlock);
 	pthread_mutex_lock(philo->progback->mtx->timelock);
@@ -68,7 +70,8 @@ void	*monitor(void *ptr)
 			i = 0;
 		pthread_mutex_lock(program->mtx->timelock);
 		if (program->philos[i].last_time &&
-			get_time() - program->philos[i].last_time >= program->args->time_to_die)
+			get_time() - program->philos[i].last_time
+			> program->args->time_to_die)
 		{
 			pthread_mutex_unlock(program->mtx->timelock);
 			pthread_mutex_lock(program->mtx->printlock);
