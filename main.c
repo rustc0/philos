@@ -12,6 +12,32 @@
 
 #include "philo.h"
 
+void	dsty_mtx(t_program *program)
+{
+	pthread_mutex_destroy(program->mtx->printlock);
+	pthread_mutex_destroy(program->mtx->timelock);
+	pthread_mutex_destroy(program->mtx->deadlock);
+	pthread_mutex_destroy(program->mtx->donelock);
+	pthread_mutex_destroy(program->mtx->meallock);
+	free(program->mtx->printlock);
+	free(program->mtx->timelock);
+	free(program->mtx->deadlock);
+	free(program->mtx->donelock);
+	free(program->mtx->meallock);
+}
+
+void	clean_up(t_program *program)
+{
+	if (!program || !program->args)
+		return ;
+	destroy_forks(program);
+	dsty_mtx(program);
+	free(program->mtx);
+	free(program->philos);
+	free(program->args);
+	free(program);
+}
+
 long	get_time(void)
 {
 	struct timeval	tv;

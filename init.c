@@ -22,7 +22,7 @@ t_program	*init_program(char **av)
 	program->args = init_args(av, program);
 	program->mtx = my_malloc(sizeof(t_mtx), program);
 	init_forks(program);
-	init_mtx(program, 1);
+	init_mtx(program);
 	init_philos(program);
 	return (program);
 }
@@ -54,34 +54,18 @@ void	init_philos(t_program *program)
 	program->philos = ph;
 }
 
-void	init_mtx(t_program *program, int flag)
+void	init_mtx(t_program *program)
 {
-	if (flag)
-	{
-		program->mtx->printlock = my_malloc(sizeof(pthread_mutex_t), program);
-		program->mtx->timelock = my_malloc(sizeof(pthread_mutex_t), program);
-		program->mtx->meallock = my_malloc(sizeof(pthread_mutex_t), program);
-		program->mtx->deadlock = my_malloc(sizeof(pthread_mutex_t), program);
-		program->mtx->donelock = my_malloc(sizeof(pthread_mutex_t), program);
-		pthread_mutex_init(program->mtx->printlock, NULL);
-		pthread_mutex_init(program->mtx->timelock, NULL);
-		pthread_mutex_init(program->mtx->deadlock, NULL);
-		pthread_mutex_init(program->mtx->donelock, NULL);
-		pthread_mutex_init(program->mtx->meallock, NULL);
-	}
-	else
-	{
-		pthread_mutex_destroy(program->mtx->printlock);
-		pthread_mutex_destroy(program->mtx->timelock);
-		pthread_mutex_destroy(program->mtx->deadlock);
-		pthread_mutex_destroy(program->mtx->donelock);
-		pthread_mutex_destroy(program->mtx->meallock);
-		free(program->mtx->printlock);
-		free(program->mtx->timelock);
-		free(program->mtx->deadlock);
-		free(program->mtx->donelock);
-		free(program->mtx->meallock);
-	}
+	program->mtx->printlock = my_malloc(sizeof(pthread_mutex_t), program);
+	program->mtx->timelock = my_malloc(sizeof(pthread_mutex_t), program);
+	program->mtx->meallock = my_malloc(sizeof(pthread_mutex_t), program);
+	program->mtx->deadlock = my_malloc(sizeof(pthread_mutex_t), program);
+	program->mtx->donelock = my_malloc(sizeof(pthread_mutex_t), program);
+	pthread_mutex_init(program->mtx->printlock, NULL);
+	pthread_mutex_init(program->mtx->timelock, NULL);
+	pthread_mutex_init(program->mtx->deadlock, NULL);
+	pthread_mutex_init(program->mtx->donelock, NULL);
+	pthread_mutex_init(program->mtx->meallock, NULL);
 }
 
 void	init_forks(t_program *program)
@@ -112,7 +96,7 @@ t_args	*init_args(char **args, t_program *program)
 		p_args->num_iterations = ft_atol(args[5]);
 	else
 		p_args->num_iterations = -1;
-	if(p_args->num_philos == 0)
+	if (p_args->num_philos == 0)
 	{
 		free(p_args);
 		free(program);

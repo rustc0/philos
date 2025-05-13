@@ -68,23 +68,32 @@ void	*monitor(void *ptr)
 			break ;
 		if (i >= program->args->num_philos)
 			i = 0;
-		pthread_mutex_lock(program->mtx->timelock);
-		if (program->philos[i].last_time &&
-			get_time() - program->philos[i].last_time
-			> program->args->time_to_die)
-		{
-			pthread_mutex_unlock(program->mtx->timelock);
-			pthread_mutex_lock(program->mtx->printlock);
-			print_message(&program->philos[i], DEAD);
-			pthread_mutex_unlock(program->mtx->printlock);
-			pthread_mutex_lock(program->mtx->deadlock);
-			program->dead = 1;
-			pthread_mutex_unlock(program->mtx->deadlock);
-			return NULL;
-		}
-		pthread_mutex_unlock(program->mtx->timelock);
+		if (!monitoring(program, &i))
+			return (NULL);
 		i++;
 		ft_msleep(1);
 	}
-	return NULL;
+	return (NULL);
+}
+
+void	*monitoring(t_program *program, int *i)
+{
+	if (*i >= program->args->num_philos)
+		*i = 0;
+	pthread_mutex_lock(program->mtx->timelock);
+	if (program->philos[*i].last_time
+		&& get_time() - program->philos[*i].last_time
+		> program->args->time_to_die)
+	{
+		pthread_mutex_unlock(program->mtx->timelock);
+		pthread_mutex_lock(program->mtx->printlock);
+		print_message(&program->philos[*i], DEAD);
+		pthread_mutex_unlock(program->mtx->printlock);
+		pthread_mutex_lock(program->mtx->deadlock);
+		program->dead = 1;
+		pthread_mutex_unlock(program->mtx->deadlock);
+		return (NULL);
+	}
+	pthread_mutex_unlock(program->mtx->timelock);
+	return (program);
 }

@@ -12,18 +12,6 @@
 
 #include "philo.h"
 
-void	clean_up(t_program *program)
-{
-	if (!program || !program->args)
-		return ;
-	destroy_forks(program);
-	init_mtx(program, 0);
-	free(program->mtx);
-	free(program->philos);
-	free(program->args);
-	free(program);
-}
-
 void	destroy_forks(t_program *program)
 {
 	int	i;

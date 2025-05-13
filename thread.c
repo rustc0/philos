@@ -12,10 +12,9 @@
 
 #include "philo.h"
 
-
 void	start_threads(t_program *program)
 {
-	int	i;
+	int			i;
 	pthread_t	t_monitor;
 
 	i = 0;
@@ -23,9 +22,8 @@ void	start_threads(t_program *program)
 	program->start_time = get_time();
 	while (i < program->args->num_philos)
 	{
-		if ((pthread_create(&program->philos[i].tid, NULL, &routine,
-			&program->philos[i])) == -1)
-			perror("pthread_create");
+		pthread_create(&program->philos[i].tid, NULL, &routine,
+			&program->philos[i]);
 		i++;
 	}
 	i = 0;
@@ -46,8 +44,8 @@ int	check_done(t_program *program)
 	pthread_mutex_lock(program->mtx->meallock);
 	while (i < program->args->num_philos)
 	{
-		if (program->args->num_iterations != -1 &&
-			philos_full(program))
+		if (program->args->num_iterations != -1
+			&& philos_full(program))
 		{
 			program->done = 1;
 			pthread_mutex_unlock(program->mtx->donelock);
@@ -81,13 +79,12 @@ void	*routine(void *ptr)
 	philo = ptr;
 	program = philo->progback;
 	if (program->args->num_philos == 1)
-		{
-			one_philo(philo);
-			return (NULL);
-		}
+	{
+		one_philo(philo);
+		return (NULL);
+	}
 	while (1)
 	{
-		
 		eat(philo);
 		ph_sleep(philo);
 		think(philo);
